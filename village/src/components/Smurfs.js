@@ -13,6 +13,7 @@ class Smurfs extends Component {
               <Smurf
                 key={smurf.id}
                 {...smurf}
+                deleteSmurf={this.props.deleteSmurf}
               />
             );
           })}

@@ -1,3 +1,113 @@
-.App {
+main {
+  margin: auto;
+  max-width: 500px;
+}
+
+.bar {
+  background: dodgerblue;
+  border-bottom: 5px solid white;
+  color: white;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.bar a {
+  border-radius: 5px;
+  color: inherit;
+  font-weight: bold;
+  margin: 0 1rem;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.bar a.active,
+.bar a:hover {
+  background: white;
+  color: dodgerblue;
+}
+
+.smurfs h1 {
+  color: dodgerblue;
+  margin-bottom: 1rem;
   text-align: center;
+}
+
+.smurf {
+  background: dodgerblue;
+  border: 5px solid skyblue;
+  color: white;
+  font-weight: bold;
+  line-height: 2rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+.smurf-form {
+  background: dodgerblue;
+  border: 5px solid skyblue;
+  color: white;
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.smurf-form form {
+  align-items: center;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.smurf-form p {
+  background: #347c17;
+  color: white;
+  font-weight: bold;
+  font-variant: small-caps;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: lowercase;
+  transition: 0.5s;
+}
+
+.smurf-form form input {
+  background: white;
+  border: 5px solid skyblue;
+  color: dodgerblue;
+  padding: 0.5rem;
+}
+
+.smurf-form form input::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+.smurf-form form input.name {
+  width: 50%;
+}
+
+.smurf-form form input.age,
+.smurf-form form input.height {
+  width: 20%;
+}
+
+button {
+  background: white;
+  border: 5px solid white;
+  color: dodgerblue;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 1rem auto 0 auto;
+  padding: 0.5rem;
+  transition: 0.5s;
+  width: 100%;
+}
+
+button:hover {
+  background: skyblue;
+  border-color: skyblue;
+  color: white;
 }
