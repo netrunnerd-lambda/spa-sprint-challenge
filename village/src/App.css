@@ -45,6 +45,31 @@ main {
   text-transform: uppercase;
 }
 
+.smurf-acts {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.smurf-acts button {
+  margin: 0;
+  width: 48%;
+}
+
+.smurf-acts button:last-child {
+  padding: 0;
+}
+
+.smurf-acts button a {
+  color: inherit;
+  display: block;
+  height: 100%;
+  padding: 0.5rem;
+  text-decoration: none;
+  width: 100%;
+}
+
 .smurf-form {
   background: dodgerblue;
   border: 5px solid skyblue;

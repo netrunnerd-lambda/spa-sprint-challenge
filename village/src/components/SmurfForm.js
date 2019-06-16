@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import ReactTimeout from 'react-timeout';
 
 class SmurfForm extends Component {
@@ -10,8 +11,9 @@ class SmurfForm extends Component {
     redirect: false
   };
 
-  addSmurf = e => {
-    const { addSmurf } = this.props,
+  handleSmurf = e => {
+    const { addSmurf, updating, updateSmurf } = this.props,
+          { id } = this.props.match.params,
           { name, age, height } = this.state,
           smurf = {
             name,
@@ -21,7 +23,10 @@ class SmurfForm extends Component {
 
     e.preventDefault();
 
-    addSmurf(smurf);
+    if (updating)
+      updateSmurf(id, smurf);
+    else
+      addSmurf(smurf);
 
     this.setState({
       name: '',
@@ -30,42 +35,53 @@ class SmurfForm extends Component {
       done: true
     });
 
-    this.props.setTimeout(_ => this.setState({ done: false }), 1000);
+    this.props.setTimeout(_ => this.setState({ done: false, redirect: updating }), 1000);
   }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidMount() {
+    if (this.props.updating)
+      this.setState({...this.props.smurf});
+  }
+
   render() {
+    const { updating } = this.props,
+          { name, age, height, done, redirect } = this.state;
+
+    if (redirect)
+      return <Redirect to="/" />;
+
     return (
       <div className="smurf-form">
-        <form onSubmit={this.addSmurf}>
+        <form onSubmit={this.handleSmurf}>
           <input
             autoFocus
             className="name"
             onChange={this.handleInputChange}
             placeholder="name"
-            value={this.state.name}
+            value={name}
             name="name"
           />
           <input
             className="age"
             onChange={this.handleInputChange}
             placeholder="age"
-            value={this.state.age}
+            value={age}
             name="age"
           />
           <input
             className="height"
             onChange={this.handleInputChange}
             placeholder="height"
-            value={this.state.height}
+            value={height}
             name="height"
           />
-          <button type="submit">ADD</button>
+          <button type="submit">{updating ? 'UPDATE' : 'ADD'}</button>
         </form>
-        {this.state.done && <p>ADDED SMURF</p>}
+        {done && <p>{updating ? 'UPDATED' : 'ADDED'} SMURF</p>}
       </div>
     );
   }
