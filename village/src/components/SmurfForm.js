@@ -12,7 +12,7 @@ class SmurfForm extends Component {
   };
 
   handleSmurf = e => {
-    const { addSmurf, updating, updateSmurf } = this.props,
+    const { addSmurf, setTimeout, updating, updateSmurf } = this.props,
           { id } = this.props.match.params,
           { name, age, height } = this.state,
           smurf = {
@@ -35,7 +35,7 @@ class SmurfForm extends Component {
       done: true
     });
 
-    this.props.setTimeout(_ => this.setState({ done: false, redirect: updating }), 1000);
+    setTimeout(_ => this.setState({ done: false, redirect: updating }), 1000);
   }
 
   handleInputChange = e => {
